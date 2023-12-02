@@ -1,0 +1,209 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "to-do-app",
+    "dateExported": "2023-12-02T09:31:18.290Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "16f3fed0-8a39-409a-ab06-5b107a93d648",
+            "name": "users",
+            "containerId": "",
+            "created": "2023-12-01T15:20:18.721Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "f1b7a1af-9c06-402b-9c9d-6f8e48df9081",
+            "name": "tasks",
+            "containerId": "",
+            "created": "2023-12-01T15:20:47.726Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "d1d497a2-f70f-4bc2-aa7c-e6c011fc6555",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "16f3fed0-8a39-409a-ab06-5b107a93d648",
+            "name": "GET USER BY ID",
+            "url": "{{base_url}}/api/v1/users/8",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-12-01T13:59:15.661Z",
+            "modified": "2023-12-02T03:59:33.637Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "05cc6c5d-9f13-4dde-a49e-cb14504d5e93",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "f1b7a1af-9c06-402b-9c9d-6f8e48df9081",
+            "name": "GET TASK BY JWT",
+            "url": "{{base_url}}/api/v1/tasks",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-12-01T15:22:05.205Z",
+            "modified": "2023-12-02T03:55:59.477Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOnsiaWQiOjksImVtYWlsIjoidGVzdDRAbWFpbC5jb20iLCJuYW1lIjoidGVzdDRAbWFpbC5jb20ifSwiaWF0IjoxNzAxNDg5MDQyLCJleHAiOjE3MDE0OTk4NDJ9.z69P2Wi0UNGBIftt1AZmgSPsWKCtFof5HWbF__1ovTc"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "26b479f4-397e-4bbc-bec9-b6efd6f08b71",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "f1b7a1af-9c06-402b-9c9d-6f8e48df9081",
+            "name": "GET TASK BY USER ID Copy",
+            "url": "{{base_url}}/api/v1/tasks/4",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-12-02T03:58:32.748Z",
+            "modified": "2023-12-02T04:00:06.090Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOnsiaWQiOjksImVtYWlsIjoidGVzdDRAbWFpbC5jb20iLCJuYW1lIjoidGVzdDRAbWFpbC5jb20ifSwiaWF0IjoxNzAxNDg5MDQyLCJleHAiOjE3MDE0OTk4NDJ9.z69P2Wi0UNGBIftt1AZmgSPsWKCtFof5HWbF__1ovTc",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c774c255-59ea-4000-b29f-34ffeef9df89",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "16f3fed0-8a39-409a-ab06-5b107a93d648",
+            "name": "GET USERS",
+            "url": "{{base_url}}/api/v1/users",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-12-01T14:01:57.183Z",
+            "modified": "2023-12-01T14:02:03.976Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3f053acd-5905-4360-aacb-bf757d0e4281",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "f1b7a1af-9c06-402b-9c9d-6f8e48df9081",
+            "name": "ADD TASK",
+            "url": "{{base_url}}/api/v1/tasks",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-12-01T15:31:23.502Z",
+            "modified": "2023-12-01T15:40:46.060Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\": 4,\n  \"title\": \"Menyapu\",\n  \"description\": \"Menyapu halaman rumah\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "508eb790-0ba7-4e2d-a4ac-17526527be0f",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "16f3fed0-8a39-409a-ab06-5b107a93d648",
+            "name": "REGISTER",
+            "url": "{{base_url}}/api/v1/users/register",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-12-01T14:02:12.891Z",
+            "modified": "2023-12-02T02:51:09.768Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"test3@mail.com\",\n  \"pin\": \"111111\",\n  \"name\": \"test\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d459eb48-1ca5-4ec4-b334-32543ef617c9",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "16f3fed0-8a39-409a-ab06-5b107a93d648",
+            "name": "LOGIN",
+            "url": "{{base_url}}/api/v1/users/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-12-01T14:16:16.186Z",
+            "modified": "2023-12-01T14:23:15.304Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"test2@mail.com\",\n  \"pin\": \"111111\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "892c64e8-1685-4d1c-aef9-0c28d6ec66c7",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "16f3fed0-8a39-409a-ab06-5b107a93d648",
+            "name": "DELETE USER BY ID",
+            "url": "{{base_url}}/api/v1/users/1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-12-01T15:15:27.346Z",
+            "modified": "2023-12-01T15:18:13.481Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "454282b1-5cfe-4f4e-9e88-07e0ca82986b",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "16f3fed0-8a39-409a-ab06-5b107a93d648",
+            "name": "UPDATE USER BY ID",
+            "url": "{{base_url}}/api/v1/users/1",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-12-01T15:15:36.080Z",
+            "modified": "2023-12-01T15:16:03.301Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3d1595a2-7937-4fbb-9a59-665565bb6e26",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "f1b7a1af-9c06-402b-9c9d-6f8e48df9081",
+            "name": "UPDATE TASK",
+            "url": "{{base_url}}/api/v1/tasks/5",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2023-12-01T18:01:57.478Z",
+            "modified": "2023-12-01T18:12:09.568Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\":1\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "3b557fd4-91ce-4845-abbc-27797594cc0e",
+            "colId": "45c0e2b0-acc9-4db3-b880-40ad61a2f6fe",
+            "containerId": "f1b7a1af-9c06-402b-9c9d-6f8e48df9081",
+            "name": "DELETE TASK",
+            "url": "{{base_url}}/api/v1/tasks/4123",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2023-12-01T18:14:58.191Z",
+            "modified": "2023-12-01T18:15:41.257Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

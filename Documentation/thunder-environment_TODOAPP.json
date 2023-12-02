@@ -1,0 +1,12 @@
+{
+    "client": "Thunder Client",
+    "environmentName": "TODOAPP",
+    "dateExported": "2023-12-02T09:51:35.533Z",
+    "version": "1.0",
+    "variables": [
+        {
+            "name": "base_url",
+            "value": "https://tough-brash-astronomy.glitch.me/"
+        }
+    ]
+}
