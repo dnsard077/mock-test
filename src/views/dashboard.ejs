@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr.completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <h2>To-Do List</h2>
+        <button type="button" onclick="logout()">Logout</button>
+    </div>
+
+    <div id="user-info"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="task-list">
+        </tbody>
+    </table>
+
+    <script>
+        var token = localStorage.getItem('token');
+
+        window.onload = function async() {
+            if (!token) {
+                window.location("/view/login")
+            }
+            getTask(token);
+            displayUserInfo(token);
+        };
+
+        async function getTask(token) {
+            try {
+                const response = await fetch('/api/v1/tasks', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                });
+                const data = await response.json();
+                if (data.status === 200 || data.status === 404) {
+                    displayTasks(data.data)
+                } else if (data.status === 401) {
+                    alert("Expired Login");
+                    window.location.assign("/view/login")
+                }
+            } catch (error) {
+                alert("Failed to retrieve tasks");
+                console.error('Task retrieval failed:', error.message);
+            }
+        }
+
+        function displayTasks(tasks) {
+            var taskListElement = document.getElementById("task-list");
+            taskListElement.innerHTML = ""; // Clear existing rows
+
+            if (tasks.length === 0) {
+                var noTaskRow = document.createElement("tr");
+                var noTaskCell = document.createElement("td");
+
+                noTaskCell.textContent = "No tasks yet";
+                noTaskCell.colSpan = 3;
+
+                noTaskRow.appendChild(noTaskCell);
+                taskListElement.appendChild(noTaskRow);
+            } else {
+
+                tasks.forEach(function (task) {
+                    var row = document.createElement("tr");
+                    var taskTitle = document.createElement("td");
+                    var taskDesc = document.createElement("td");
+                    var statusCell = document.createElement("td");
+
+                    taskTitle.textContent = task.title;
+                    taskDesc.textContent = task.description;
+                    statusCell.textContent = task.status ? "Completed" : "Not Started";
+
+                    row.appendChild(taskTitle);
+                    row.appendChild(taskDesc);
+                    row.appendChild(statusCell);
+
+                    if (task.status === "Completed") {
+                        row.classList.add("completed");
+                    }
+
+                    taskListElement.appendChild(row);
+                });
+            }
+        }
+
+        function displayUserInfo(token) {
+            var userInfoElement = document.getElementById("user-info");
+
+            try {
+                let decodedToken = decodeJwt(token)?.userId;
+                if (decodedToken && decodedToken.email && decodedToken.name) {
+                    userInfoElement.textContent = "Logged in as: " + decodedToken.email + " (Name: " + decodedToken.name + ")";
+                } else {
+                    userInfoElement.textContent = "User information not available";
+                }
+            } catch (error) {
+                console.error('Failed to decode token:', error.message);
+            }
+        }
+
+        function decodeJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+
+            return JSON.parse(jsonPayload);
+        }
+
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.assign("/view/login")
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<h2>Register</h2>
+<form id="registerForm">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your name">
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+    </div>
+    <div>
+        <label for="pin">Pin:</label>
+        <input type="text" id="pin" name="pin" maxlength="6" minlength="6" required placeholder="Enter your pin">
+    </div>
+    <div>
+        <input type="submit" value="Register">
+    </div>
+</form>
+<div>
+    <p>Already have an account? <a href="/view/login">Login</a></p>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const registerForm = document.getElementById('registerForm');
+
+        registerForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('email').value;
+            const email = document.getElementById('email').value;
+            const pin = document.getElementById('pin').value;
+
+            try {
+                const response = await fetch('/api/v1/users/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, pin }),
+                });
+                const data = await response.json();
+                if(data.status === 201){
+                    alert("Account sucessfully created");
+                    window.location.href = `/view/login`;
+                }
+            } catch (error) {
+                alert("Failed to register");
+                console.error('Login failed:', error.message);
+            }
+        });
+    });
+</script>
